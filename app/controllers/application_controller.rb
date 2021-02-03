@@ -1,11 +1,25 @@
+require './config/environment'
+
+
 class ApplicationController < Sinatra::Base
     register Sinatra::ActiveRecordExtension
     enable :sessions 
-    set :session_secret, "my_application_secret"
-    set :views, Proc.new { File.join(root, "../views/") }
+    set :session_secret, ENV['SESSION_KEY'] ||= "super_secret"
+    set :public_folder, 'app/public'
+    set :views, 'app/views'
+
+    include Helpers 
 
     get '/' do 
-        erb :index_not_logged_in
+        @users = User.all 
+        if is_logged?
+            erb:index 
+        else 
+            erb :index_log_in
+        end 
     end 
 
+    not_found do 
+        erb :not_found 
+    end 
 end
