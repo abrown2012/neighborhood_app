@@ -2,12 +2,7 @@
 <html>
 <head>
 <style> 
-body {
-  background-color: white;
-  color: black;
-  font-size: 40px;
-  font-weight: bold;
-}
+
 .login {
   display: block;
   margin-left: auto;
@@ -27,8 +22,8 @@ body {
             <input type="submit" value="Log In">
         </form>
     <p class="signup"</p>
-        <form action="/signup" method="POST">
-            <input type="submit" value="Create New Account">
-        </form>
+      <form method="get" action="/signup">
+        <button type="submit">Create New Account</button>
+      </form>
 </body>
 </html>
