@@ -10,16 +10,19 @@
   font-size: 40px;
   font-weight: bold;
   width: "50%";
+  text-align: center;
+  font-family: "Monaco";
 }
 </style>
 </head>
 
 <body>
-    <p class="login">Welcome to your Neighborhood.</p>
+    <p class="login">WELCOME TO </p>
+
         <form action="/login" method="POST">
-	        <input type="text" name="email" placeholder="Email:">
-	        <input type="password" name="password" placeholder="Password:">
-            <input type="submit" value="Log In">
+	        <input type="email" name="email" placeholder="Email:" required>
+	        <input type="password" name="password" placeholder="Password:" required>
+          <input type="submit" value="Log In">
         </form>
     <p class="signup"</p>
       <form method="get" action="/signup">
