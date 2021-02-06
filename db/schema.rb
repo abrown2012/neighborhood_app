@@ -10,7 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_021432) do
+ActiveRecord::Schema.define(version: 2021_02_06_232227) do
+
+  create_table "neighborhoodposts", force: :cascade do |t|
+    t.integer "post_id_id"
+    t.integer "neighborhood_id_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["neighborhood_id_id"], name: "index_neighborhoodposts_on_neighborhood_id_id"
+    t.index ["post_id_id"], name: "index_neighborhoodposts_on_post_id_id"
+  end
+
+  create_table "neighborhoods", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "userneighborhoods", force: :cascade do |t|
+    t.integer "user_id_id"
+    t.integer "neighborhood_id_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["neighborhood_id_id"], name: "index_userneighborhoods_on_neighborhood_id_id"
+    t.index ["user_id_id"], name: "index_userneighborhoods_on_user_id_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
