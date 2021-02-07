@@ -15,6 +15,7 @@ gem 'shotgun'
 gem 'faker'
 gem "tux"
 gem 'pry'
+gem 'dotenv'
 
 group :development do
     gem 'sqlite3'

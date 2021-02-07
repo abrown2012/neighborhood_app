@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end 
 
     post '/signup' do 
-    
+        redirect '/users'
     end 
 
 

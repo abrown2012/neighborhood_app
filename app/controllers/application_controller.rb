@@ -4,7 +4,7 @@ require './config/environment'
 class ApplicationController < Sinatra::Base
     register Sinatra::ActiveRecordExtension
     enable :sessions 
-    set :session_secret, ENV['SESSION_KEY'] ||= "super_secret"
+    set :session_secret, ENV['SESSION_SECRET'] 
     set :public_folder, 'app/public'
     set :views, 'app/views'
 
