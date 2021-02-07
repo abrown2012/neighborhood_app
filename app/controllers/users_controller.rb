@@ -6,7 +6,15 @@ class UsersController < ApplicationController
     end 
 
     post '/signup' do 
-        redirect '/users'
+        user = User.create(name: params[:name], password: params[:password], email: params[:email])
+        if user.valid?
+            flash[:success] = "Congratulations! You successfully created your Neighborhood account."
+            session["user_id"] = user.id 
+            redirect '/userneighborhoods'
+        else 
+            flash[:error] = user.errors.full_messages.first
+            redirect '/signup'
+        end     
     end 
 
 

@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :session_secret, ENV['SESSION_SECRET'] 
     set :public_folder, 'app/public'
     set :views, 'app/views'
-
+    register Sinatra::Flash
     include Helpers 
 
     get '/' do 

@@ -1,5 +1,12 @@
+
+<% if flash[:error] %>
+<div class="errors flash fatal">
+    <h4 class="error"><%= flash[:error] %></h4>
+</div>
+<% end %>
+
 <h1>Create your new Neighborhood account here</h1>
-<div class="form-container">
+<div class="form-container" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top-center">
     <form action="/signup" method="POST">
         <div class="form-group">
             <input type="text" name="name" placeholder="Name:" required>
@@ -13,6 +20,7 @@
         <div class="form-group">
             <input type="password" name="password-confirmation" placeholder="Password Confirmation:" required>
         </div>
-            <input type="submit" value="Sign Up">
-        </div>
+            <input type="submit" value="Create Account">
+       
     </form>
+</div>
