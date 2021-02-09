@@ -5,13 +5,13 @@ class UsersController < ApplicationController
     end 
 
     post '/signup' do 
-        @user = User.create(name: params["name"], email: params["email"], password: params["password"])
-        if @user.valid?
+        user = User.create(name: params["name"], email: params["email"], password: params["password"])
+        if user.valid?
             flash[:success] = "Congratulations! You successfully created your Neighborhood account."
-            session["user_id"] = @user.id 
+            session["user_id"] = user.id 
             redirect "/neighborhoods"
         else 
-            flash[:error] = @user.errors.full_messages.first
+            flash[:error] = user.errors.full_messages.first
             redirect '/signup'
         end     
     end 
@@ -27,9 +27,9 @@ class UsersController < ApplicationController
 
 
     post '/login' do 
-        @user = User.find_by_email(params[:email])
-        if @user && @user.authenticate(params[:password])
-            session["user_id"] = @user.id
+        user = User.find_by_email(params[:email])
+        if user && user.authenticate(params[:password])
+            session["user_id"] = user.id
             flash[:success] = "Successfully logged in!"
             redirect "/"
           else
@@ -38,9 +38,7 @@ class UsersController < ApplicationController
           end
     end 
 
-    post "/users/:id/neighborhoods" do 
-        neighborhood_params = params["neighborhood"]["name"]
-    end 
+
 
     get '/logout' do 
         session.clear

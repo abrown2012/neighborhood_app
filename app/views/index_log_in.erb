@@ -3,30 +3,63 @@
 <head>
 <style> 
 
-.login {
+.logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
   width: "50%";
   text-align: center;
-  font-family: "Monaco";
+  font-family: "Chalkduster";
+   
+}
+
+.controls {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 25px;
+  font-weight: normal;
+  width: "50%";
+  text-align: center;
+  font-family: "Arial";
 }
 </style>
 </head>
 
 <body>
-    <p class="login">WELCOME TO </p>
-
-        <form action="/login" method="POST">
-	        <input type="email" name="user[email]" placeholder="Email:" required>
-	        <input type="password" name="user[password]" placeholder="Password:" required>
-          <input type="submit" value="Log In">
-        </form>
-    <p class="signup"</p>
-      <form method="get" action="/signup">
-        <button type="submit">Create New Account</button>
+    <div class="logo">
+      <p class="text-primary">Neighborhood</p>
+    </div>
+    </br>
+    </br>
+    <div class="card text-center">
+      <form action="/login" method="POST">
+       
+        <div class="row justify-content-md-center">    
+          <input type="email" name="email" placeholder="Email:" required>
+        </div> 
+        </br>
+        <div class="row justify-content-md-center">  
+          <input type="password" name="password" placeholder="Password:" required>
+        </div>
+        </br>
+        <div class="row justify-content-md-center"> 
+          
+          <input type="submit" class="btn btn-primary" value="Log In">
+        </div>
       </form>
+
+      </br>
+      </div>
+      </br>
+        
+      <div class="row justify-content-md-center"> 
+        <form method="get" action="/signup">
+          <button type="submit" class="btn btn-success">Create New Account</button>
+        </form>
+      </div>
+   
 </body>
 </html>
