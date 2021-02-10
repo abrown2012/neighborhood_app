@@ -16,6 +16,9 @@ class UsersController < ApplicationController
             redirect '/signup'
         end     
     end 
+    get '/posts/new' do 
+        erb :'/posts/new'
+    end 
     
     get '/' do 
         @users = User.all 
