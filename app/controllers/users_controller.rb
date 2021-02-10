@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
     post '/signup' do 
         user = User.create(name: params["name"], email: params["email"], password: params["password"])
+        
         if user.valid?
             flash[:success] = "Congratulations! You successfully created your Neighborhood account."
             session["user_id"] = user.id 

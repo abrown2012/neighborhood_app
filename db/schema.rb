@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 2021_02_06_232227) do
   end
 
   create_table "neighborhoods", force: :cascade do |t|
-    t.string "name"
+    t.string "neighborhood_name"
     t.string "city"
     t.string "state"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
