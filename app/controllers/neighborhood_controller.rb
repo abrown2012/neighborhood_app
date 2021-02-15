@@ -15,7 +15,7 @@ class NeighborhoodsController < ApplicationController
     end  
 
     post '/neighborhoods/:id' do 
-
+        
         if !current_user.neighborhoods.include?(Neighborhood.find(params["id"]))
             current_user.neighborhoods << Neighborhood.find(params["id"])
         end 
