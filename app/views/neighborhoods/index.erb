@@ -1,0 +1,24 @@
+
+    <h1>Choose neighborhoods that you would like to follow</h1>
+    
+        <% @neighborhoods.each do |neighborhood| %>
+            <% if !current_user.neighborhoods.include?(neighborhood) %>
+                <form action="/neighborhoods/<%=neighborhood.id%>" method="POST">
+                    <p><%=neighborhood.neighborhood_name %>, <%=neighborhood.city%>, <%=neighborhood.state%></p>
+                    <input class="btn btn-primary" name="id" type="submit" value="Follow">
+                    </input>
+                </form>
+            <% else %>
+                <form action="/neighborhoods/<%=neighborhood.id%>" method="POST">
+                     <p><%=neighborhood.neighborhood_name %>, <%=neighborhood.city%>, <%=neighborhood.state%></p>
+                     <input type="hidden" name="_method" value="DELETE">
+                     <input class="btn btn-success" name="id" type="submit" value="Following">
+                     </input><br> 
+                 </form>
+                <% end %> 
+                    <% end %>
+        <br>
+
+  
+
+ 

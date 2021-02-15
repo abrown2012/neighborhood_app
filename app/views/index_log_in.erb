@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
+<% if flash[:error] %>
+<div class="errors flash fatal">
+    <h4 class="error"><%= flash[:error] %></h4>
+</div>
+<% end %>
+
 <style> 
 
 .logo {
@@ -26,9 +29,7 @@
   font-family: "Arial";
 }
 </style>
-</head>
 
-<body>
     <div class="logo">
       <p class="text-primary">Neighborhood</p>
     </div>
@@ -60,6 +61,4 @@
           <button type="submit" class="btn btn-success">Create New Account</button>
         </form>
       </div>
-   
-</body>
-</html>
+ 

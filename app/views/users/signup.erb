@@ -2,6 +2,12 @@
 <% if flash[:error] %>
 <div class="errors flash fatal">
     <h4 class="error"><%= flash[:error] %></h4>
+    
+</div>
+<% elsif flash[:success]%>
+<div class="success alert">
+    <h4 class="success"><%= flash[:success] %></h4>
+    
 </div>
 <% end %>
 
@@ -9,7 +15,7 @@
 <div class="form-container" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top-center">
     <form action="/signup" method="POST">
         <div class="form-group">
-            <input type="text" name="name" placeholder="Name:" required>
+            <input type="text" name="name" placeholder="Name:" required> 
         </div>
         <div class="form-group">
             <input type="email" name="email" placeholder="Email:" required>

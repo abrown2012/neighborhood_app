@@ -8,9 +8,8 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'app/public'
     set :views, 'app/views'
     register Sinatra::Flash
+    
     include Helpers 
-
-
 
     not_found do 
         erb :not_found 
