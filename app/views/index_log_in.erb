@@ -18,47 +18,31 @@
    
 }
 
-.controls {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 25px;
-  font-weight: normal;
-  width: "50%";
-  text-align: center;
-  font-family: "Arial";
-}
 </style>
 
-    <div class="logo">
-      <p class="text-primary">Neighborhood</p>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <form action="/login" method="POST">
+    <div class="row justify-content-md-center">    
+      <input type="email" name="email" placeholder="Email:" required>
+    </div> 
+    </br>
+    <div class="row justify-content-md-center">  
+      <input type="password" name="password" placeholder="Password:" required>
     </div>
-    </br>
-    </br>
-    <div class="card text-center">
-      <form action="/login" method="POST">
-       
-        <div class="row justify-content-md-center">    
-          <input type="email" name="email" placeholder="Email:" required>
-        </div> 
-        </br>
-        <div class="row justify-content-md-center">  
-          <input type="password" name="password" placeholder="Password:" required>
-        </div>
-        </br>
-        <div class="row justify-content-md-center"> 
-          
-          <input type="submit" class="btn btn-primary" value="Log In">
-        </div>
-      </form>
+      </br>
+    <div class="row justify-content-md-center"> 
+      <input type="submit" class="btn btn-primary" value="Log In">
+    </div>
+  </form>
 
-      </br>
-      </div>
-      </br>
-        
-      <div class="row justify-content-md-center"> 
-        <form method="get" action="/signup">
-          <button type="submit" class="btn btn-success">Create New Account</button>
-        </form>
-      </div>
+  </br>
+  </div>
+  <div class="row justify-content-md-center"> 
+    <form method="get" action="/signup">
+      <button type="submit" class="btn btn-success">Create New Account</button>
+    </form>
+  </div>
  

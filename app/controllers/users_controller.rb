@@ -30,8 +30,6 @@ class UsersController < ApplicationController
         
     end 
 
-
-    
     get '/' do 
         @users = User.all 
         if is_logged?
