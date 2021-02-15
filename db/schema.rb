@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_02_06_232227) do
     t.string "city"
     t.string "state"
     t.integer "user_id"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2021_02_06_232227) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "text"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

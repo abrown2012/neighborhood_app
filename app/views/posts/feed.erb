@@ -1,0 +1,13 @@
+<h1>See all posts below</h1>
+    
+        <% @posts.each do |post| %>
+            <% if current_user.posts.include?(post) %>
+                <p><%=post.title %></p>
+                <p><%=post.text %></p>
+            <% end %> 
+        <% end %>
+    
+
+  
+
+ 

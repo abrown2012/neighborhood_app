@@ -5,6 +5,7 @@ class CreateNeighborhoods < ActiveRecord::Migration[5.2]
       t.string :city
       t.string :state
       t.integer :user_id
+      t.integer :post_id
       t.timestamps
     end
   end
