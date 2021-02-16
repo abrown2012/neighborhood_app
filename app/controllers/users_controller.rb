@@ -80,12 +80,15 @@ class UsersController < ApplicationController
         end
     end  
 
-    get '/users/:id' do 
+    get '/:id/edit' do 
         erb :'/users/edit'
     end
     
-    patch '/users/:id' do 
-        binding.pry
+    patch '/:id/edit' do 
+        @user = User.find(params["id"])
+        @user.update(name: params[:name])
+        @user.update(email: params[:email])
+        redirect '/'
     end 
 
 end

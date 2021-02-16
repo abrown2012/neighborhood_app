@@ -29,22 +29,10 @@
               <a class="btn btn-white" href="/posts">My Posts</a> 
               <a class="btn btn-white" href="/user_feed">My Feed</a>
               <a class="btn btn-white" href="/neighborhoods">My Neighborhoods</a>
-              <a class="btn btn-white" href="/users/:id">My Profile</a>
-              <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
-              </a>
-            
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/neighborhoods">Neighborhoods</a>
-                  <a class="dropdown-item" href="#">Users</a>
-                </div>
-              </li>
+              <a class="btn btn-white" href="/:id/edit">My Profile</a>
             </ul>
-            </div>
-          <% end %>
-      
-
+          </div>
+        <% end %>
   </nav>
         <%= yield %>
 
