@@ -1,6 +1,6 @@
 
-    <h1>Choose neighborhoods that you would like to follow</h1>
-    
+    <h1>Choose neighborhoods that you would like to follow or create a new neighborhood</h1>
+    <a class="btn btn-primary" href="/neighborhoods/new">Create New Neighborhood</a>
         <% @neighborhoods.each do |neighborhood| %>
             <% if !current_user.neighborhoods.include?(neighborhood) %>
                 <form action="/neighborhoods/<%=neighborhood.id%>" method="POST">

@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
+
+
     get '/signup' do 
-            erb :'/users/signup'
+        erb :'/users/signup'
     end 
 
     post '/signup' do 
@@ -33,7 +35,8 @@ class UsersController < ApplicationController
     get '/' do 
         @users = User.all 
         if is_logged?
-            erb :'/posts/feed'
+            @posts = Post.all 
+            erb :'/posts/posts'
         else 
             erb :index_log_in
         end 
@@ -60,13 +63,29 @@ class UsersController < ApplicationController
     end 
 
     get '/posts' do 
-        @posts = Post.all 
-        erb :'/posts/feed'
+        if is_logged?
+            @posts = Post.all 
+            erb :'/posts/feed'
+        else
+            erb :index_log_in
+        end
     end  
 
     get '/user_feed' do 
-        @posts = Post.all 
-        erb :'/posts/posts'
+        if is_logged?
+            @posts = Post.all 
+            erb :'/posts/posts'
+        else
+            erb :index_log_in
+        end
     end  
+
+    get '/users/:id' do 
+        erb :'/users/edit'
+    end
+    
+    patch '/users/:id' do 
+        binding.pry
+    end 
 
 end

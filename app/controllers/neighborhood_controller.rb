@@ -1,7 +1,11 @@
 class NeighborhoodsController < ApplicationController
     include Helpers  
     get '/neighborhoods/new' do
-        erb :'/neighborhoods/new'
+        if is_logged?
+            erb :'/neighborhoods/new'
+        else 
+            erb :index_log_in
+        end
     end 
 
     post '/neighborhoods/new' do
@@ -10,8 +14,12 @@ class NeighborhoodsController < ApplicationController
     end 
     
     get '/neighborhoods' do 
-        @neighborhoods = Neighborhood.all 
-        erb :'/neighborhoods/index'
+        if is_logged?
+            @neighborhoods = Neighborhood.all 
+            erb :'/neighborhoods/index'
+        else 
+            erb :index_log_in
+        end
     end  
 
     post '/neighborhoods/:id' do 
