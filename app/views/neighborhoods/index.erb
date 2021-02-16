@@ -1,13 +1,17 @@
 
-    <h1>Choose neighborhoods that you would like to follow or create a new neighborhood</h1>
-    <a class="btn btn-primary" href="/neighborhoods/new">Create New Neighborhood</a>
-        <% @neighborhoods.each do |neighborhood| %>
-            <% if !current_user.neighborhoods.include?(neighborhood) %>
-                <form action="/neighborhoods/<%=neighborhood.id%>" method="POST">
-                    <p><%=neighborhood.neighborhood_name %>, <%=neighborhood.city%>, <%=neighborhood.state%></p>
-                    <input class="btn btn-primary" name="id" type="submit" value="Follow">
-                    </input>
-                </form>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-header shadow p-3 mb-5 bg-white rounded">
+        <div class="p-3 mb-2 bg-primary text-white rounded">
+            <div class="font-weight-bold text-center">CHOOSE NEIGHBORHOODS THAT YOU  WOULD LIKE TO FOLLOW OR CREATE A NEW NEIGHBORHOOD</div>
+        </div>
+        <a class="btn btn-primary" href="/neighborhoods/new">Create New Neighborhood</a>
+            <% @neighborhoods.each do |neighborhood| %>
+                <% if !current_user.neighborhoods.include?(neighborhood) %>
+                    <form action="/neighborhoods/<%=neighborhood.id%>" method="POST">
+                        <p><%=neighborhood.neighborhood_name %>, <%=neighborhood.city%>, <%=neighborhood.state%></p>
+                        <input class="btn btn-primary" name="id" type="submit" value="Follow">
+                        </input>
+                    </form>
             <% else %>
                 <form action="/neighborhoods/<%=neighborhood.id%>" method="POST">
                      <p><%=neighborhood.neighborhood_name %>, <%=neighborhood.city%>, <%=neighborhood.state%></p>
