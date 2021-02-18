@@ -6,9 +6,13 @@
             </div>
             <% @posts.each do |post| %>
                 <% if current_user.posts.include?(post) %>
-                    
                     <div class="font-weight-bold"><%=post.title %></div>
-                    <p><%=post.text %></p>
+                        <p><%=post.text %></p>
+                    
+                        <a class="btn btn-primary btn-sm" href="/feed/<%=post.id%>/edit">Edit</a>
+                        <br>
+                        <br>
+                        <br>
                 <% end %> 
             <% end %>
         </div>
