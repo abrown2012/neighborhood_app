@@ -85,9 +85,16 @@ class UsersController < ApplicationController
     end
 
     patch '/feed/:id/edit' do 
+       
         Post.find(params["id"]).update(title: params[:title])
         Post.find(params["id"]).update(text: params[:text])
-        redirect '/posts/feed'
+        redirect '/posts'
+    end 
+
+    delete '/feed/:id/delete' do 
+        
+        Post.find(params["id"]).delete
+        redirect '/posts'
     end 
  
     get '/:id/edit' do 
