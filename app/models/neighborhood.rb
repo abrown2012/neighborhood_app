@@ -1,5 +1,5 @@
 class Neighborhood < ActiveRecord::Base
-    belongs_to :post 
+    has_many :posts 
     has_many :user_neighborhoods
     has_many :users, through: :user_neighborhoods
     validates :state, presence: true,  length: {in: 2..30}

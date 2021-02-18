@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2021_02_15_231818) do
     t.string "neighborhood_name"
     t.string "city"
     t.string "state"
-    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_02_15_231818) do
     t.string "title"
     t.string "text"
     t.integer "user_id"
+    t.integer "neighborhood_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

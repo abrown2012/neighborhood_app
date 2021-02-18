@@ -23,13 +23,12 @@ class UsersController < ApplicationController
     end 
 
     post '/posts/new' do 
-        
+        binding.pry
         post = Post.new(title: params[:title], text: params[:text])
-        post.neighborhoods << Neighborhood.find(params["post"]["neighborhood_id"])
+        post.neighborhood_id= Neighborhood.find(params["post"]["neighborhood_id"]).id
         current_user.posts << post
         
         redirect '/posts/new'
-        
     end 
 
     get '/' do 
