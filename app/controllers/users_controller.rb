@@ -23,9 +23,10 @@ class UsersController < ApplicationController
     end 
 
     post '/posts/new' do 
-        binding.pry
+        
         post = Post.new(title: params[:title], text: params[:text])
-        post.neighborhood_id= Neighborhood.find(params["post"]["neighborhood_id"]).id
+        selected_neighborhood = Neighborhood.find(params["post"]["neighborhood_id"])
+        selected_neighborhood.posts << post 
         current_user.posts << post
         
         redirect '/posts/new'
@@ -96,11 +97,12 @@ class UsersController < ApplicationController
         redirect '/posts'
     end 
  
-    get '/:id/edit' do 
+    get '/users/:id/edit' do 
         erb :'/users/edit'
     end
     
-    patch '/:id/edit' do 
+    patch '/users/:id/edit' do 
+        binding.pry
         @user = User.find(params["id"])
         @user.update(name: params[:name])
         @user.update(email: params[:email])

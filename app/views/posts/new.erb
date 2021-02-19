@@ -1,34 +1,45 @@
-<div class="container-box">
-  <h3>Write your new post here</h3>
-  <br>
-  <form class="form-stretch" action="/posts/new" method="POST">
-    <div class="mb-1 row">
-      <div class="col-md-6">
-        <input type="text" name="title" placeholder="Title" required>
-      </div>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="p-3 mb-2 bg-primary text-white rounded">
+        <div class="font-weight-bold text-center">CREATE YOUR NEW POST HERE</div>
     </div>
-    <div class="mb-1 row">
-      <div class="col-md-6">
-        <input type="text" name="text" placeholder="What's on your mind?" required>
-      </div>
-    </div> 
-    <div class="mb-1 row">
-      <div class="col-md-6">
-        <label for="datetime">Select neighborhood that will see your post:</label>
-      </div> 
-    </div>
-    <div class="mb-1 row">
-      <div class="col-md-6">
-      <select type="dropdown" name="post[neighborhood_id]" required> 
-        <option value="" disabled selected>Select neighborhood</option>    
-          <% Neighborhood.select(:neighborhood_name, :id).each do |n|%>
-            <option value="<%= n.id %>" id="<%= n.id %>"/><%= n.neighborhood_name %></option>
-          <% end %>
-      </select>
-      </div>
-    </div>
-    <div class="row justify-content-md-center"> 
-      <input type="submit" class="btn btn-primary" value="Submit">
-    </div>
-  </form>
+    <form class="form-horizontal" action="/posts/new" method="POST">
+        <div class="form-group">
+            <label class="control-label col-sm-100 font-weight-bold" for="title">Title:</label>
+            <div class="col-sm-100">
+                <input type="text" class="form-control" name="title" required>
+            </div> 
+        </div>
+        <br>  
+        <div class="form-group">
+            <label class="control-label col-sm-100 font-weight-bold" for="text">What would you like to say?</label>
+              <div class="col-sm-100">
+                <input type="text" class="form-control" rows="5" name="text" required>
+                
+              </div> 
+        </div>
+        <br>  
+        <div class="form-group">  
+                <label class="control-label col-sm-100 font-weight-bold" for="select_neighborhood">Select Neighborhood that will see your post:</label>
+        </div>
+        <div class="form-group">
+        <div class="control-label col-sm-100 font-weight-bold">
+            <select class="custom-select custom-select-lg mb-3"  type="dropdown" name="post[neighborhood_id]" required> 
+                <option value="" disabled selected>Current neighborhoods:</option>    
+                    <% Neighborhood.select(:neighborhood_name, :id).each do |n|%>
+                        <option value="<%= n.id %>" id="<%= n.id %>"/><%= n.neighborhood_name %></option>
+                    <% end %>
+            </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-sm-100 font-weight-bold">
+                <input type="submit" class="btn btn-success" value="Create Post">
+            </div>
+        </div>  
+        </form>
+
 </div>
+                
+
+
+  
