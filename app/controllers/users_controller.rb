@@ -88,6 +88,7 @@ class UsersController < ApplicationController
        
         Post.find(params["id"]).update(title: params[:title])
         Post.find(params["id"]).update(text: params[:text])
+        binding.pry
         redirect '/posts'
     end 
 
