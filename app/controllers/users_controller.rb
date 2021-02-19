@@ -85,10 +85,11 @@ class UsersController < ApplicationController
     end
 
     patch '/feed/:id/edit' do 
-       
+        binding.pry
         Post.find(params["id"]).update(title: params[:title])
         Post.find(params["id"]).update(text: params[:text])
-        binding.pry
+        Post.find(params["id"]).update(neighborhood_id: params[:post][:neighborhood_id])
+        
         redirect '/posts'
     end 
 
