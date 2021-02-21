@@ -22,14 +22,16 @@ class UsersController < ApplicationController
         erb :'/posts/new'
     end 
 
-    post '/posts/new' do 
+    post '/posts' do #new was deleted here 
         
-        post = Post.new(title: params[:title], text: params[:text])
+        post = Post.new(title: params[:title], text: params[:text]) #add if statemetn
         selected_neighborhood = Neighborhood.find(params["post"]["neighborhood_id"])
         selected_neighborhood.posts << post 
         current_user.posts << post
         
-        redirect '/posts/new'
+        redirect '/posts/new' #in case of error, 
+        #make sure if not logged users should access the page 
+        #you have to first follow neighborhood to see posts--> check for permissions on accessing the pages
     end 
 
     get '/' do 
@@ -86,16 +88,25 @@ class UsersController < ApplicationController
 
     patch '/feed/:id/edit' do 
         binding.pry
-        Post.find(params["id"]).update(title: params[:title])
-        Post.find(params["id"]).update(text: params[:text])
-        Post.find(params["id"]).update(neighborhood_id: params[:post][:neighborhood_id])
-        
+        post =  Post.find(params["id"])
+        if post.update(title: params[:title], text: params[:text], neighborhood_id: params[:post][:neighborhood_id])
+            #add flash message 
+            #add redirect 
+        else 
+            #add flash message 
+            #add redirect  (all put, patch, delete add "if")
+        end 
         redirect '/posts'
     end 
 
     delete '/feed/:id/delete' do 
-        
-        Post.find(params["id"]).delete
+        post = Post.find(params["id"])
+        if post.delete
+            redirect '/posts'
+            #add flash message 
+        else 
+            # add flash message
+        end 
         redirect '/posts'
     end 
  
@@ -104,11 +115,15 @@ class UsersController < ApplicationController
     end
     
     patch '/users/:id/edit' do 
-        binding.pry
-        @user = User.find(params["id"])
-        @user.update(name: params[:name])
-        @user.update(email: params[:email])
-        redirect '/'
+        
+        user = User.find(params["id"])
+        if user.update(params[:user])
+            redirect '/'
+        else
+            binding.pry
+            redirect '/'  
+        end 
+       
     end 
 
 end

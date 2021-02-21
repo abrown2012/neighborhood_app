@@ -8,7 +8,7 @@ class NeighborhoodsController < ApplicationController
         end
     end 
 
-    post '/neighborhoods/new' do
+    post '/neighborhoods' do
         @neighborhood = Neighborhood.create(params["neighborhood"])
         redirect '/neighborhoods'
     end 

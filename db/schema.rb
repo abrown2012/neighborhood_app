@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_02_15_231818) do
 
-  create_table "neighborhoodposts", force: :cascade do |t|
-    t.integer "post_id_id"
-    t.integer "neighborhood_id_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["neighborhood_id_id"], name: "index_neighborhoodposts_on_neighborhood_id_id"
-    t.index ["post_id_id"], name: "index_neighborhoodposts_on_post_id_id"
-  end
-
   create_table "neighborhoods", force: :cascade do |t|
     t.string "neighborhood_name"
     t.string "city"
@@ -43,15 +34,6 @@ ActiveRecord::Schema.define(version: 2021_02_15_231818) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "userneighborhoods", force: :cascade do |t|
-    t.integer "user_id_id"
-    t.integer "neighborhood_id_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["neighborhood_id_id"], name: "index_userneighborhoods_on_neighborhood_id_id"
-    t.index ["user_id_id"], name: "index_userneighborhoods_on_user_id_id"
   end
 
   create_table "users", force: :cascade do |t|
