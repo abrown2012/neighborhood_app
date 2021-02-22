@@ -22,6 +22,11 @@ class NeighborhoodsController < ApplicationController
         end
     end  
 
+    get '/neighborhoods/:id/edit' do 
+        erb  :'/neighborhoods/edit'
+    end  
+
+
     post '/neighborhoods/:id' do 
         
         if !current_user.neighborhoods.include?(Neighborhood.find(params["id"]))
@@ -32,13 +37,24 @@ class NeighborhoodsController < ApplicationController
     end
 
     delete '/neighborhoods/:id' do 
-     
 
-        if Neighborhood.find(params["id"]).delete
-            redirect '/neighborhoods'
+        if current_user.neighborhoods.include?(Neighborhood.find(params["id"]))
+            current_user.neighborhoods.delete(Neighborhood.find(params["id"]))
         end 
         
         redirect '/neighborhoods'
 
+    end 
+
+
+    delete '/neighborhoods/:id/delete' do 
+        neighborhood = Neighborhood.find(params["id"])
+        if neighborhood.delete
+            redirect '/neighborhoods'
+            #add flash message 
+        else 
+            # add flash message
+        end 
+        redirect '/neighborhoods'
     end 
 end
