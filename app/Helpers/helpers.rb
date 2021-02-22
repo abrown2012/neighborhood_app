@@ -12,7 +12,7 @@ module Helpers
     end 
 
     def current_neighborhood 
-        Neighborhood.find(params["id"])
+        Neighborhood.find(params[:id])
     end 
     
     def all_states

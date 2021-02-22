@@ -26,6 +26,22 @@ class NeighborhoodsController < ApplicationController
         erb  :'/neighborhoods/edit'
     end  
 
+    patch '/neighborhoods/:id/edit' do 
+       
+
+        
+        if current_neighborhood.update(neighborhood_name: params[:neighborhood][:neighborhood_name], city: params[:neighborhood][:city], state: params[:neighborhood][:state], owner_id: current_user.id)
+            binding.pry
+            #add flash message 
+            redirect '/neighborhoods'
+        else 
+            #add flash message 
+            #add redirect  (all put, patch, delete add "if")
+            redirect '/neighborhoods/:id/edit'
+        end 
+        
+    end 
+
 
     post '/neighborhoods/:id' do 
         
