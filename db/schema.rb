@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_231818) do
+ActiveRecord::Schema.define(version: 2021_02_21_201326) do
 
   create_table "neighborhoods", force: :cascade do |t|
     t.string "neighborhood_name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_02_15_231818) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "owner_id"
   end
 
   create_table "posts", force: :cascade do |t|

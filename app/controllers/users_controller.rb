@@ -29,7 +29,7 @@ class UsersController < ApplicationController
         selected_neighborhood.posts << post 
         current_user.posts << post
         
-        redirect '/posts/new' #in case of error, 
+        redirect '/posts' #in case of error, 
         #make sure if not logged users should access the page 
         #you have to first follow neighborhood to see posts--> check for permissions on accessing the pages
     end 
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
     end
 
     patch '/feed/:id/edit' do 
-        binding.pry
+        
         post =  Post.find(params["id"])
         if post.update(title: params[:title], text: params[:text], neighborhood_id: params[:post][:neighborhood_id])
             #add flash message 
@@ -108,6 +108,17 @@ class UsersController < ApplicationController
             # add flash message
         end 
         redirect '/posts'
+    end 
+
+    delete '/neighborhoods/:id/delete' do 
+        neighborhood = Neighborhood.find(params["id"])
+        if neighborhood.delete
+            redirect '/neighborhoods'
+            #add flash message 
+        else 
+            # add flash message
+        end 
+        redirect '/neighborhoods'
     end 
  
     get '/users/:id/edit' do 

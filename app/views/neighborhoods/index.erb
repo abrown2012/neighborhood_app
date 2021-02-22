@@ -12,7 +12,7 @@
                         <input class="btn btn-primary" name="id" type="submit" value="Follow">
                         </input>
                     </form>
-            <% else %>
+                <% else %>
                 <form action="/neighborhoods/<%=neighborhood.id%>" method="POST">
                      <p><%=neighborhood.neighborhood_name %>, <%=neighborhood.city%>, <%=neighborhood.state%></p>
                      <input type="hidden" name="_method" value="DELETE">
@@ -20,6 +20,14 @@
                      </input><br> 
                  </form>
                 <% end %> 
+                <% if current_user.email == 'aga@email.com' %>
+                <br>
+                <form action="/neighborhoods/<%=neighborhood.id%>/delete" method="POST">
+                    
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+            <%end%>
                     <% end %>
         <br>
 
