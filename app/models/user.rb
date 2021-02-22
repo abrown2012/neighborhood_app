@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
     has_secure_password
     has_many :posts
+    has_many :comments
     has_many :user_neighborhoods
     has_many :neighborhoods, through: :user_neighborhoods
     validates :email, presence: true, uniqueness: true, format: {with: /\A(?<username>[^@\s]+)@((?<domain_name>[-a-z0-9]+)\.(?<domain>[a-z]{2,255}))\z/i} 

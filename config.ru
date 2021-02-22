@@ -6,6 +6,7 @@ end
 
 use Rack::MethodOverride 
 use UsersController 
+use CommentsController 
 use NeighborhoodsController
 use PostsController
 run ApplicationController

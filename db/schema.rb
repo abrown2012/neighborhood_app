@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_035524) do
+ActiveRecord::Schema.define(version: 2021_02_22_044104) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.datetime "timestamp"
+    t.integer "user_id"
+    t.integer "post_id"
+  end
 
   create_table "neighborhoods", force: :cascade do |t|
     t.string "neighborhood_name"
