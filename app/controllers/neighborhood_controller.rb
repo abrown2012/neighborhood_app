@@ -27,49 +27,40 @@ class NeighborhoodsController < ApplicationController
     end  
 
     patch '/neighborhoods/:id/edit' do 
-       
-
-        
         if current_neighborhood.update(neighborhood_name: params[:neighborhood][:neighborhood_name], city: params[:neighborhood][:city], state: params[:neighborhood][:state], owner_id: current_user.id)
             binding.pry
-            #add flash message 
+            flash[:success] = "Neighborhood successfully edited!"
             redirect '/neighborhoods'
         else 
-            #add flash message 
-            #add redirect  (all put, patch, delete add "if")
+            flash[:error] = "Please try again"
             redirect '/neighborhoods/:id/edit'
         end 
-        
     end 
 
 
     post '/neighborhoods/:id' do 
-        
         if !current_user.neighborhoods.include?(Neighborhood.find(params["id"]))
             current_user.neighborhoods << Neighborhood.find(params["id"])
         end 
-
         redirect '/neighborhoods'
     end
 
     delete '/neighborhoods/:id' do 
-
         if current_user.neighborhoods.include?(Neighborhood.find(params["id"]))
             current_user.neighborhoods.delete(Neighborhood.find(params["id"]))
         end 
-        
         redirect '/neighborhoods'
-
     end 
 
 
     delete '/neighborhoods/:id/delete' do 
         neighborhood = Neighborhood.find(params["id"])
         if neighborhood.delete
+            flash[:success] = "Neighborhood successfully deleted!"
             redirect '/neighborhoods'
-            #add flash message 
         else 
-            # add flash message
+            flash[:error] = "Please try again"
+            redirect '/neighborhoods'
         end 
         redirect '/neighborhoods'
     end 
