@@ -1,44 +1,58 @@
-
-<div class="card shadow p-3 mb-5 bg-white rounded">
+<div class="card-header shadow p-3 mb-5 bg-white rounded">
+<div class="p-3 mb-2 bg-primary text-white rounded">
+    <div class="font-weight-bold text-center">CHOOSE NEIGHBORHOODS THAT YOU  WOULD LIKE TO FOLLOW OR CREATE A NEW NEIGHBORHOOD</div>
+</div>
+<a class="btn btn-info text-center" href="/neighborhoods/new">CREATE NEW NEIGHBORHOOD</a>
+<br>
+<br>
+<div class="row">
+    <% @neighborhoods.each do |neighborhood| %>
     <div class="card-header shadow p-3 mb-5 bg-white rounded">
-        <div class="p-3 mb-2 bg-primary text-white rounded">
-            <div class="font-weight-bold text-center">CHOOSE NEIGHBORHOODS THAT YOU  WOULD LIKE TO FOLLOW OR CREATE A NEW NEIGHBORHOOD</div>
-        </div>
-        <a class="btn btn-primary" href="/neighborhoods/new">Create New Neighborhood</a>
-        <br>
-        <br>
-            <% @neighborhoods.each do |neighborhood| %>
-                <div class="card shadow p-3 mb-5 bg-white rounded">
                     <% if !current_user.neighborhoods.include?(neighborhood) %>
+                    <div class="card shadow p-3 mb-5 bg-white rounded text-center">
                         <form action="/neighborhoods/<%=neighborhood.id%>" method="POST">
-                            <p><%=neighborhood.neighborhood_name %>, <%=neighborhood.city%>, <%=neighborhood.state%></p>
+                            <div class="text-center font-weight-bold"
+                                <p><%=neighborhood.neighborhood_name %></p>
+                                <p><%=neighborhood.city%>, <%=neighborhood.state%></p>
+                            </div>
                             <input class="btn btn-primary" name="id" type="submit" value="Follow">
                             </input>
                             <% if current_user.id == neighborhood.owner_id %>
                                 <a class="btn btn-warning" href="/neighborhoods/<%=neighborhood.id%>/edit">Edit</a>
                             <%end%>
                         </form>
+                        </div>
                     <% else %>
-                    <form action="/neighborhoods/<%=neighborhood.id%>" method="POST">
-                        <p><%=neighborhood.neighborhood_name %>, <%=neighborhood.city%>, <%=neighborhood.state%></p>
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input class="btn btn-success" name="id" type="submit" value="Following">
-                        </input>
-                        <% if current_user.id == neighborhood.owner_id %>
-                            <a class="btn btn-warning" href="/neighborhoods/<%=neighborhood.id%>/edit">Edit</a>
-                        <%end%>
-                    </form>
+                    <div class="card shadow p-3 mb-5 bg-white rounded text-center">
+                        <form action="/neighborhoods/<%=neighborhood.id%>" method="POST">
+                            <div class="text-center font-weight-bold"
+                                <p><%=neighborhood.neighborhood_name %></p>
+                                <p><%=neighborhood.city%>, <%=neighborhood.state%></p>
+                            </div>
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input class="btn btn-success" name="id" type="submit" value="Following">
+                            </input>
+                            <% if current_user.id == neighborhood.owner_id %>
+                                <a class="btn btn-warning" href="/neighborhoods/<%=neighborhood.id%>/edit">Edit</a>
+                            <%end%>
+                        </form>
+                        </div>
                     <% end %> 
                     <% if current_user.email == 'aga@email.com' %>
-                    <br>
                     <form action="/neighborhoods/<%=neighborhood.id%>/delete" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="submit" value="Delete" class="btn btn-danger">
                     </form>
                     <%end%>
+                    <br>
                 </div>
             <% end %>
-        <br>
+        </div>
+        </div>
+
+
+     
+
 
   
 

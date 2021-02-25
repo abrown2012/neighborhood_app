@@ -29,8 +29,9 @@
                         </div>
                     </form>
                     <br>  
+                    <p><Comments:></p>
                     <% post.comments.each do |com| %>      
-                        <div class="font-weight-normal"><%=User.find(com.user_id).name%> wrote: </div>
+                        <div class="font-weight-bold"><%=User.find(com.user_id).name%> wrote: </div>
                         <div class="font-weight-normal"><%=com.content%></div>
                         <br>
                     <%end%>   
