@@ -1,0 +1,42 @@
+<div class="col-sm-6 col-md-12">
+    <div class="card-header shadow p-3 mb-5 bg-white rounded">
+        <div class="p-3 mb-2 bg-primary text-white rounded">
+            <div class="font-weight-bold text-center">SEE POSTS FROM NEIGHBORHOODS THAT YOU FOLLOW</div>
+        </div>
+        <%current_user.neighborhoods.each do |n| %>
+            <% Post.all.reverse.each do |post| %>
+                <% if post.neighborhood.id == (n.id) %> 
+                <div class="card-header shadow p-3 mb-5 bg-white rounded">
+                    <div class="font-weight-bold">Written by: <%=post.user.name%></div>
+                    <div class="font-italic">Posted On: <%=post.created_at.strftime("%Y-%m-%d")%></div>
+                    <div class="font-weight-bold"><%=post.title %></div>
+                    <p><%=post.text %></p>
+                    <% if current_user.id == post.user.id %>
+                        <form action="/feed/<%=post.id%>/delete" method="POST">
+                            <a class="btn btn-success btn-sm" href="/feed/<%=post.id%>/edit">Edit</a>
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                        </form>
+                        <br>
+                     
+                    <%end%>
+                    
+                    <form action="/comment/<%=post.id%>" method="POST">
+                        <textarea type="text" rows="2" class="form-control" name="content" placeholder="Add comment:"></textarea>
+                        <br>
+                        <div class="row justify-content-md-center"> 
+                        <input type="submit" class="btn btn-primary" value="Add Comment">
+                        </div>
+                    </form>
+                    <br>  
+                    <% post.comments.each do |com| %>      
+                        <div class="font-weight-normal"><%=User.find(com.user_id).name%> wrote: </div>
+                        <div class="font-weight-normal"><%=com.content%></div>
+                        <br>
+                    <%end%>   
+                </div>
+                <% end %> 
+            <% end %> 
+        <% end %>
+    </div>
+</div>

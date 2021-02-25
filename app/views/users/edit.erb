@@ -1,0 +1,22 @@
+
+<br>
+<br>
+<br>
+<form action="/users/<%=current_user.id%>/edit" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <div class="row justify-content-md-center">    
+        <input type="text" name="user[name]" placeholder="Name:" value="<%=current_user.name%>">
+    </div> 
+    <br>
+    <div class="row justify-content-md-center">    
+        <input type="email" name="user[email]" placeholder="Email:" value="<%=current_user.email%>">
+    </div> 
+    <br>
+    <div class="row justify-content-md-center"> 
+        <input type="submit" class="btn btn-success" value="Update Profile">
+    </div>
+    
+</form>
+          
+       
+

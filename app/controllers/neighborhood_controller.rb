@@ -9,8 +9,14 @@ class NeighborhoodsController < ApplicationController
     end 
 
     post '/neighborhoods' do
-        @neighborhood = Neighborhood.create(neighborhood_name: params[:neighborhood][:neighborhood_name], city: params[:neighborhood][:city], state: params[:neighborhood][:state], owner_id: current_user.id)
-        redirect '/neighborhoods'
+        if is_logged?
+            @neighborhood = Neighborhood.create(neighborhood_name: params[:neighborhood][:neighborhood_name], city: params[:neighborhood][:city], state: params[:neighborhood][:state], owner_id: current_user.id)
+            flash[:success] = "Your neighborhood was created successfully!" 
+            redirect '/neighborhoods'
+        else 
+            flash[:error] = "Please log in!" 
+            redirect '/'
+        end
     end 
     
     get '/neighborhoods' do 
@@ -23,7 +29,11 @@ class NeighborhoodsController < ApplicationController
     end  
 
     get '/neighborhoods/:id/edit' do 
-        erb  :'/neighborhoods/edit'
+        if is_logged? 
+            erb  :'/neighborhoods/edit'
+        else 
+            erb :'index_log_in'
+        end 
     end  
 
     patch '/neighborhoods/:id/edit' do 
