@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+    include Helpers  
     get '/posts/new' do 
         erb :'/posts/new'
     end 

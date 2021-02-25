@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+    include Helpers  
     get '/signup' do 
         erb :'/users/signup'
     end 

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    include Helpers  
     post '/comment/:id' do 
             if comment = Comment.new(content: params[:content], user_id: current_user.id, post_id: params[:id])
                 selected_post = Post.find(params[:id]) 
