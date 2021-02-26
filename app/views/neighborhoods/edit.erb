@@ -21,13 +21,11 @@
                     <select class="custom-select custom-select-lg mb-3" type="dropdown" name="neighborhood[state]" required>
                         <option value="" disabled selected>State</option>
                             <% all_states.each do |s|%>
-                            <option value="<%= s %>" id="<%=s %>" <%="selected" if current_neighborhood.state == s %> ><%=s%></option>
+                            <option value="<%= s %> id="<%=s %>" <%="selected" if current_neighborhood.state == s %> ><%=s%></option>
                             <% end %>
                     </select> 
                 </div>
             </div>
-
-
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10 text-center">

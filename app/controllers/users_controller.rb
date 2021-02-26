@@ -4,6 +4,13 @@ class UsersController < ApplicationController
         erb :'/users/signup'
     end 
 
+    get '/about' do 
+   
+            erb :'/about'
+     
+
+    end 
+
     post '/signup' do 
         user = User.create(name: params["name"], email: params["email"], password: params["password"])
         

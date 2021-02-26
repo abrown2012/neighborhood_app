@@ -38,7 +38,7 @@ class NeighborhoodsController < ApplicationController
 
     patch '/neighborhoods/:id/edit' do 
         if current_neighborhood.update(neighborhood_name: params[:neighborhood][:neighborhood_name], city: params[:neighborhood][:city], state: params[:neighborhood][:state], owner_id: current_user.id)
-            binding.pry
+            
             flash[:success] = "Neighborhood successfully edited!"
             redirect '/neighborhoods'
         else 

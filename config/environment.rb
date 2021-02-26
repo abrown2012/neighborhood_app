@@ -3,13 +3,11 @@ ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
 require 'dotenv/load'
-
+require 'dotenv'
+Dotenv.load
 
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
-ActiveRecord::Base.establish_connection(
-  :adapter => "sqlite3",
-  :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
-)
+set :database_file, './database.yml'
 
 require_all 'app'

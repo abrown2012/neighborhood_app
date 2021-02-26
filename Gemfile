@@ -16,6 +16,7 @@ gem "tux"
 gem 'pry'
 gem 'dotenv'
 gem 'sinatra-flash'
+gem 'dotenv'
 
 group :development do
     gem 'sqlite3'
